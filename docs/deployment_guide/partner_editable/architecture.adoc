@@ -1,28 +1,25 @@
 :xrefstyle: short
 
-Deploying this Partner Solution with default parameters builds the following {partner-product-short-name} environment in the
+Deploying this Quick Start for a new virtual private cloud (VPC) with default parameters builds the following Web Application Proxy and AD FS environment in the
 AWS Cloud.
 
-// Replace this example diagram with your own. Follow our wiki guidelines: https://w.amazon.com/bin/view/AWS_Quick_Starts/Process_for_PSAs/#HPrepareyourarchitecturediagram. Upload your source PowerPoint file to the GitHub {deployment name}/docs/images/ directory in its repository.
-
+// Replace this example diagram with your own. Send us your source PowerPoint file. Be sure to follow our guidelines here : http://(we should include these points on our contributors giude)
 [#architecture1]
-.Partner Solution architecture for {partner-product-short-name} on AWS
-image::../docs/deployment_guide/images/architecture_diagram.png[Architecture]
+.Quick Start architecture for _{partner-product-short-name}_ on AWS
+[link=images/architecture_diagram.png]
+image::../docs/deployment_guide/images/architecture_diagram.png[Architecture,width=100%,height=100%]
 
-As shown in <<architecture1>>, this Partner Solution sets up the following:
+As shown in <<architecture1>>, this Quick Start deploys the following:
 
 * A highly available architecture that spans two Availability Zones.*
-* A virtual private cloud (VPC) configured with public and private subnets, according to AWS
-best practices, to provide you with your own virtual network on AWS.*
+* A virtual private cloud (VPC) configured with public and private subnets, according to AWS best practices, to provide you with your own virtual network on AWS.*
+* An internet gateway to provide access to the internet.*
 * In the public subnets:
-** Managed network address translation (NAT) gateways to allow outbound
-internet access for resources in the private subnets.*
-** A Linux bastion host in an Auto Scaling group to allow inbound Secure
-Shell (SSH) access to Amazon Elastic Compute Cloud (Amazon EC2) instances in public and private subnets.*
+** Managed network address translation (NAT) gateways to allow outbound internet access for resources in the private subnets.*
+** Microsoft Remote Desktop Gateway (RD Gateway) instances in an Auto Scaling group to provide inbound remote administrative access.*
+** WAP servers to provide secure inbound connectivity to web applications.
 * In the private subnets:
-** <item>.
-** <item>.
-// Add bullet points for any additional components that are included in the deployment. Ensure that the additional components are shown in the architecture diagram. End each bullet with a period.
-* <describe any additional components>.
+** Two Active Directory domain controllers in a security group. These act as enterprise certificate authorities (CAs) to issue required SSL certificates to the AD FS infrastructure.*
+** Two Active Directory Federation Services (AD FS) servers in a security group running on Windows Server 2022.
 
-[.small]#* The template that deploys this Partner Solution into an existing VPC skips the components marked by asterisks and prompts you for your existing VPC configuration.#
+[.small]#* The template that deploys the Quick Start into an existing VPC skips the components marked by asterisks and prompts you for your existing VPC configuration.#
